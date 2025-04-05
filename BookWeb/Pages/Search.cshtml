@@ -1,0 +1,23 @@
+@page
+@model BookWeb.Pages.SearchModel
+@{
+    ViewData["Title"] = "Wyszukiwarka książek";
+}
+
+<h1>Wyszukiwarka książek</h1>
+<form method="get">
+    <input type="text" name="Query" value="@Model.Query" placeholder="Wprowadź tytuł książki"/>
+    <button type="submit">Szukaj</button>
+</form>
+@if (Model.Results.Any()){
+    <ul>
+        @foreach (var book in Model.Results){
+            <li style="margin-bottom: 20px;">
+                <strong>@book.Title</strong><br>
+                Autorzy: @book.Authors <br>
+                <img src="@book.Thumbnail" alt="Okładka"/> <br>
+                <p>@book.Description</p>
+            </li>
+        }
+    </ul>
+}
