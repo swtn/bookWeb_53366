@@ -1,8 +1,10 @@
+using BookWeb.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddHttpClient<BookWeb.Services.GoogleBooksService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
