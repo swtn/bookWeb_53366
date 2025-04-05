@@ -12,7 +12,7 @@ public class GoogleBooksService{
     }
 
     public async Task<List<Book>> SearchBookAsync(string query){
-        var url = $"";
+        var url = $"https://www.googleapis.com/books/v1/volumes?q={Uri.EscapeDataString(query)}";;
         var response = await _httpClient.GetAsync(url);
 
         if(!response.IsSuccessStatusCode) return new List<Book>();
