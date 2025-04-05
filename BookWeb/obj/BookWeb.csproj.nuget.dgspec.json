@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj": {}
+    "c:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj": {
+    "c:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj",
+        "projectUniqueName": "c:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj",
         "projectName": "BookWeb",
-        "projectPath": "C:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj",
+        "projectPath": "c:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\BookWeb.csproj",
         "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\obj\\",
+        "outputPath": "c:\\Users\\Daniel\\Documents\\STUDIA\\bookWeb\\BookWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config"
