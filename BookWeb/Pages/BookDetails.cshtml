@@ -1,0 +1,38 @@
+@page
+@model BookWeb.Pages.BookDetailsModel
+@{
+    ViewData["Title"] = "Szczegóły książki";
+}
+
+@if (Model.Book == null)
+{
+    <h2>Nie znaleziono książki 📕</h2>
+}
+else
+{
+    <h1>@Model.Book.Title</h1>
+    <h5 class="text-muted">@Model.Book.Authors</h5>
+
+    @if (!string.IsNullOrEmpty(Model.Book.Thumbnail))
+    {
+        <img src="@Model.Book.Thumbnail" alt="Okładka książki" class="mb-3" />
+    }
+
+    <p>@Model.Book.Description</p>
+
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        <form method="post" asp-page="/BookActions/AddToList">
+            <input type="hidden" name="GoogleBookId" value="@Model.Id" />
+            <input type="hidden" name="Title" value="@Model.Book.Title" />
+            <input type="hidden" name="Authors" value="@Model.Book.Authors" />
+
+            <button class="btn btn-success me-2" name="Status" value="Przeczytane">Dodaj do przeczytanych</button>
+            <button class="btn btn-warning" name="Status" value="Do przeczytania">Dodaj do listy „do przeczytania”</button>
+        </form>
+    }
+    else
+    {
+        <p><a asp-page="/Account/Login">Zaloguj się</a>, aby dodać książkę do swojej listy 📚</p>
+    }
+}

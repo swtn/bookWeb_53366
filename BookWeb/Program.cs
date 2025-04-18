@@ -6,8 +6,7 @@ using BookWeb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
-builder.Services.AddRazorPages()
-    .WithRazorPagesRoot("/Pages"); // <--- ważne, gdy masz Pages w folderze nadrzędnym!
+builder.Services.AddRazorPages();
 builder.Services.AddHttpClient<BookWeb.Services.GoogleBooksService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -32,13 +31,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapRazorPages();
+Console.WriteLine("[MAPOWANIE] Rejestruję Razor Pages");
 
-app.MapFallback(async context =>
-{
-    Console.WriteLine($"[FALLBACK] Nie znaleziono ścieżki: {context.Request.Path}");
-    context.Response.StatusCode = 404;
-    await context.Response.WriteAsync("Fallback 404 – brak dopasowania");
-});
+app.MapRazorPages();
 
 app.Run();

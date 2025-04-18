@@ -17,7 +17,7 @@
                 Autorzy: @book.Authors <br>
                 <img src="@book.Thumbnail" alt="Okładka"/> <br>
                 <p>@book.Description</p>
-                <a asp-page="/TestBook" asp-route-id="@book.Id" class="btn btn-outline-primary btn-sm mt-2">Szczegóły</a>
+                <a asp-page="/BookDetails" asp-route-id="@book.Id" class="btn btn-outline-primary btn-sm mt-2">Szczegóły</a>
             </li>
         }
     </ul>

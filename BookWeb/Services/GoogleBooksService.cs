@@ -49,6 +49,43 @@ public class GoogleBooksService
             }
         }
 
+        
+
         return books;
     }
+
+    public async Task<Book?> GetBookByIdAsync(string id)
+{
+    var url = $"https://www.googleapis.com/books/v1/volumes/{Uri.EscapeDataString(id)}";
+    var response = await _httpClient.GetAsync(url);
+
+    if (!response.IsSuccessStatusCode)
+        return null;
+
+    using var stream = await response.Content.ReadAsStreamAsync();
+    using var doc = await JsonDocument.ParseAsync(stream);
+
+    var item = doc.RootElement;
+
+    if (item.ValueKind == JsonValueKind.Undefined || item.ValueKind == JsonValueKind.Null)
+        return null;
+
+    var volumeInfo = item.GetProperty("volumeInfo");
+
+    return new Book
+    {
+        Id = id,
+        Title = volumeInfo.GetProperty("title").GetString() ?? "Brak tytułu",
+        Authors = volumeInfo.TryGetProperty("authors", out var authors)
+            ? string.Join(", ", authors.EnumerateArray().Select(a => a.GetString()))
+            : "Nieznani autorzy",
+        Description = volumeInfo.TryGetProperty("description", out var desc)
+            ? desc.GetString()
+            : "",
+        Thumbnail = volumeInfo.TryGetProperty("imageLinks", out var img) && img.TryGetProperty("thumbnail", out var thumb)
+            ? thumb.GetString()
+            : ""
+    };
+}
+
 }

@@ -188,6 +188,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Daniel/Documents/STUDIA/bookWeb_53366/BookWeb/Pages/BookDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Daniel/Documents/STUDIA/bookWeb_53366/BookWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -210,10 +214,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Daniel/Documents/STUDIA/bookWeb_53366/BookWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Daniel/Documents/STUDIA/bookWeb_53366/BookWeb/Pages/TestBook.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdEJvb2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Documents/STUDIA/bookWeb_53366/BookWeb/Pages/_ViewImports.cshtml]
