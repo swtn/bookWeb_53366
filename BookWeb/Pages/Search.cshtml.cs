@@ -17,7 +17,7 @@ public class SearchModel : PageModel{
 
     public async Task OnGetAsync(){
         if(!string.IsNullOrWhiteSpace(Query)){
-            Results = await _bookService.SearchBookAsync(Query);
+            Results = await _bookService.SearchBooksAsync(Query);
         }
     }
 }
