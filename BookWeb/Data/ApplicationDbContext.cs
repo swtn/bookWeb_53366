@@ -13,5 +13,6 @@ namespace BookWeb.Data
 
         public DbSet<BookEntry> BookEntries { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<UserBook> UserBooks { get; set; }
     }
 }

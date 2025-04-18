@@ -1,0 +1,74 @@
+@page
+@model BookWeb.Pages.ProfileModel
+@{
+    ViewData["Title"] = "Mój profil";
+}
+
+<h1>📚 Moje książki</h1>
+
+@if (Model.Books == null || !Model.Books.Any())
+{
+    <p>Nie masz jeszcze żadnych książek na liście.</p>
+}
+else
+{
+    <h3>✅ Przeczytane</h3>
+    <div class="row">
+        @foreach (var book in Model.Books.Where(b => b.Status == "Przeczytane"))
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    @if (!string.IsNullOrEmpty(book.Thumbnail)) 
+                    {
+                        <img src="@book.Thumbnail" class="card-img-top" alt="Okładka książki" style="height: 200px; object-fit: cover;" />
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        @if (!string.IsNullOrEmpty(book.Description)) 
+                        {
+                            <p class="card-text">@book.Description.Substring(0, Math.Min(book.Description.Length, 100))...</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">Brak opisu</p>
+                        }
+                        <p class="card-text">Autorzy: @book.Authors</p>
+                        <form method="post" asp-page-handler="DeleteBook" asp-route-id="@book.Id">
+                            <button type="submit" class="btn btn-danger btn-sm">Usuń książkę</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <h3>🕗 Do przeczytania</h3>
+    <div class="row">
+        @foreach (var book in Model.Books.Where(b => b.Status == "Do przeczytania"))
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    @if (!string.IsNullOrEmpty(book.Thumbnail))  
+                    {
+                        <img src="@book.Thumbnail" class="card-img-top" alt="Okładka książki" style="height: 200px; object-fit: cover;" />
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        @if (!string.IsNullOrEmpty(book.Description))  
+                        {
+                            <p class="card-text">@book.Description.Substring(0, Math.Min(book.Description.Length, 100))...</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">Brak opisu</p>
+                        }
+                        <p class="card-text">Autorzy: @book.Authors</p>
+                        <form method="post" asp-page-handler="DeleteBook" asp-route-id="@book.Id">
+                            <button type="submit" class="btn btn-danger btn-sm">Usuń książkę</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
