@@ -6,34 +6,46 @@
 
 @if (Model.Book == null)
 {
-    <h2>Nie znaleziono książki 📕</h2>
+    <h2 class="text-center text-danger">Nie znaleziono książki 📕</h2>
 }
 else
 {
-    <h1>@Model.Book.Title</h1>
-    <h5 class="text-muted">@Model.Book.Authors</h5>
+    <div class="container my-4">
+        <h1 class="text-center">@Model.Book.Title</h1>
+        <h5 class="text-center text-muted">@Model.Book.Authors</h5>
 
-    @if (!string.IsNullOrEmpty(Model.Book.Thumbnail))
-    {
-        <img src="@Model.Book.Thumbnail" alt="Okładka książki" class="mb-3" />
-    }
+        @if (!string.IsNullOrEmpty(Model.Book.Thumbnail))
+        {
+            <div class="text-center mb-3">
+                <img src="@Model.Book.Thumbnail" alt="Okładka książki" class="img-fluid rounded" />
+            </div>
+        }
 
-    <p>@Model.Book.Description</p>
+        <p class="lead text-center">@Model.Book.Description</p>
 
-    @if (User.Identity?.IsAuthenticated ?? false)
-    {
-        <form method="post" asp-page="/BookActions/AddToList">
-            <input type="hidden" name="GoogleBookId" value="@Model.Id" />
-            <input type="hidden" name="Title" value="@Model.Book.Title" />
-            <input type="hidden" name="Authors" value="@Model.Book.Authors" />
+        @if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <form method="post" asp-page="/BookActions/AddToList" class="d-inline">
+                    <input type="hidden" name="GoogleBookId" value="@Model.Id" />
+                    <input type="hidden" name="Title" value="@Model.Book.Title" />
+                    <input type="hidden" name="Authors" value="@Model.Book.Authors" />
 
-            <button class="btn btn-success me-2" name="Status" value="Przeczytane">Dodaj do przeczytanych</button>
-            <button class="btn btn-warning" name="Status" value="Do przeczytania">Dodaj do listy „do przeczytania”</button>
-        </form>
+                    <button class="btn btn-success btn-lg" name="Status" value="Przeczytane">Dodaj do przeczytanych</button>
+                </form>
+                <form method="post" asp-page="/BookActions/AddToList" class="d-inline">
+                    <input type="hidden" name="GoogleBookId" value="@Model.Id" />
+                    <input type="hidden" name="Title" value="@Model.Book.Title" />
+                    <input type="hidden" name="Authors" value="@Model.Book.Authors" />
 
-    }
-    else
-    {
-        <p><a asp-page="/Account/Login">Zaloguj się</a>, aby dodać książkę do swojej listy 📚</p>
-    }
+                    <button class="btn btn-warning btn-lg" name="Status" value="Do przeczytania">Dodaj do listy „do przeczytania”</button>
+                </form>
+            </div>
+
+        }
+        else
+        {
+            <p class="text-center mt-4"><a asp-page="/Account/Login">Zaloguj się</a>, aby dodać książkę do swojej listy 📚</p>
+        }
+    </div>
 }

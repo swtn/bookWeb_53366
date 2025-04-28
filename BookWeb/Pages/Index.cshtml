@@ -1,10 +1,23 @@
 ﻿@page
-@model IndexModel
+@model BookWeb.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "BookWeb - Twój osobisty katalog książek";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container text-center">
+    <h1 class="display-4 mb-4">Witaj w BookWeb!</h1>
+    <p class="lead">To aplikacja do tworzenia osobistego katalogu książek. Wyszukuj książki, dodawaj je do swojej kolekcji, oceniaj i twórz listy "do przeczytania"!</p>
+    <hr class="my-4">
+    
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+            <a href="/Search" class="btn btn-primary btn-lg w-100">Szukaj książek</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/Profile" class="btn btn-secondary btn-lg w-100">Mój profil</a>
+        </div>
+    </div>
+
+    <p class="mt-5">Projekt REST - Daniel Świątek 53366s</p>
 </div>
+

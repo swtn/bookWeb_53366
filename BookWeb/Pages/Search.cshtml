@@ -4,21 +4,35 @@
     ViewData["Title"] = "Wyszukiwarka książek";
 }
 
-<h1>Wyszukiwarka książek</h1>
-<form method="get">
-    <input type="text" name="Query" value="@Model.Query" placeholder="Wprowadź tytuł książki"/>
-    <button type="submit">Szukaj</button>
-</form>
+<h1 class="text-center mb-4">Wyszukiwarka książek</h1>
+<div class="row justify-content-center mb-4">
+    <div class="col-md8 col-lg-6">
+        <form method="get">
+            <div class="input-group">
+                <input type="text" name="Query" value="@Model.Query" class="form-control form-control-lg" placeholder="Wprowadź tytuł książki"/>
+                <button type="submit" class="btn btn-outline-primary btn-lg">Szukaj</button>
+            </div>
+        </form>
+    </div>
+</div>
 @if (Model.Results.Any()){
-    <ul>
-        @foreach (var book in Model.Results){
-            <li style="margin-bottom: 20px;">
-                <strong>@book.Title</strong><br>
-                Autorzy: @book.Authors <br>
-                <img src="@book.Thumbnail" alt="Okładka"/> <br>
-                <p>@book.Description</p>
-                <a asp-page="/BookDetails" asp-route-id="@book.Id" class="btn btn-outline-primary btn-sm mt-2">Szczegóły</a>
-            </li>
+     <div class="row">
+        @foreach (var book in Model.Results)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    @if (!string.IsNullOrEmpty(book.Thumbnail))
+                    {
+                        <img src="@book.Thumbnail" class="card-img-top" alt="Okładka książki" style="height: 250px; object-fit: cover;" />
+                    }
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@book.Title</h5>
+                        <p class="card-text">@book.Description.Substring(0, Math.Min(book.Description.Length, 100))...</p>
+                        <p class="card-text"><strong>Autorzy:</strong> @book.Authors</p>
+                        <a asp-page="/BookDetails" asp-route-id="@book.Id" class="btn btn-outline-primary btn-sm mt-2">Szczegóły</a>
+                    </div>
+                </div>
+            </div>
         }
-    </ul>
+    </div>
 }
