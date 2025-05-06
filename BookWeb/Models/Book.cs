@@ -6,5 +6,7 @@ public class Book{
     public string Authors { get; set; } = null!;
     public string Description { get; set; } = null!;
     public string Thumbnail { get; set; } = null!;
+    public string Genre { get; set; } = null!;
+    public string ISBN { get; set; } = null!;
 }
 

@@ -1,0 +1,41 @@
+@page
+@model BookWeb.Pages.TopBooksModel
+@{
+    ViewData["Title"] = "Top 100 książek";
+}
+
+<h1 class="text-center mb-4">Top 100 bestsellerów NY Times</h1>
+
+<div class="row justify-content-center mb-4">
+    <div class="col-md-8 col-lg-6">
+        <form method="get">
+            <div class="input-group">
+                <input type="text" name="Query" value="@Model.Query" class="form-control form-control-lg" placeholder="Wprowadź tytuł książki" />
+                <button type="submit" class="btn btn-outline-primary btn-lg">Szukaj</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.Results.Any()) {
+    <div class="row">
+        @foreach (var book in Model.Results) {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    @if (!string.IsNullOrEmpty(book.Thumbnail)) {
+                        <img src="@book.Thumbnail" class="card-img-top" alt="Okładka ksiązki" style="height: 250px; object-fit: cover;" />
+                    }
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@book.Title</h5>
+                        <p class="card-text">@book.Description.Substring(0, Math.Min(book.Description.Length, 100))...</p>
+                        <p class="card-text"><strong>Autorzy:</strong>@book.Authors</p>
+                        <a asp-page="/BookDetails" asp-route-id="@book.Id" class="btn btn-outline-primary btn-sm mt-2">Szczegóły</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    }
+    else {
+        <p>Brak książek spełniającyh podane kryteria wyszukiwania</p>
+    }
