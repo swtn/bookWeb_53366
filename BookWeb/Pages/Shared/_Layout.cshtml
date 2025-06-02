@@ -22,12 +22,10 @@
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <span class="nav-link">Witaj, @User.Identity.Name!</span>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-page="/Search">Wyszukiwarka książek</a>
                             </li>
                             <li class="nav-item"><a asp-page="/Profile" class="nav-link">Mój profil</a></li>
+                             <li class="nav-item"><a asp-page="/TopBooks" class="nav-link">Top 15 NYTimes</a></li>
                             <li class="nav-item">
                                 <form method="post" asp-area="Identity" asp-page="/Account/Logout" id="logoutForm" class="form-inline">
                                     <button type="submit" class="nav-link btn btn-link">Wyloguj się</button>

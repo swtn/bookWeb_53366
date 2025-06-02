@@ -4,18 +4,7 @@
     ViewData["Title"] = "Top 100 książek";
 }
 
-<h1 class="text-center mb-4">Top 100 bestsellerów NY Times</h1>
-
-<div class="row justify-content-center mb-4">
-    <div class="col-md-8 col-lg-6">
-        <form method="get">
-            <div class="input-group">
-                <input type="text" name="Query" value="@Model.Query" class="form-control form-control-lg" placeholder="Wprowadź tytuł książki" />
-                <button type="submit" class="btn btn-outline-primary btn-lg">Szukaj</button>
-            </div>
-        </form>
-    </div>
-</div>
+<h1 class="text-center mb-4">Top 15 książek w gatunku Fikcja wg. NY Times</h1>
 
 @if (Model.Results.Any()) {
     <div class="row">
