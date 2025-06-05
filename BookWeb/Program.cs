@@ -6,7 +6,10 @@ using BookWeb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizePage("/index");
+});
 builder.Services.AddHttpClient<BookWeb.Services.GoogleBooksService>();
 builder.Services.AddHttpClient<BookWeb.Services.NYTimesBookService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
